@@ -11,23 +11,23 @@ const Hero = () => {
   ];
 
   return (
-    <div name="home" className="w-full h-screen bg-gradient-to-b from-primary via-primary to-tertiary relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-20 left-0 w-72 h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-tertiary/20 rounded-full filter blur-3xl"></div>
+    <div name="home" className="w-full min-h-screen bg-gradient-to-b from-primary via-primary to-tertiary relative overflow-hidden py-8 sm:py-12">
+      {/* Background decoration - adjusted for better mobile appearance */}
+      <div className="absolute top-20 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-secondary/10 rounded-full filter blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-tertiary/20 rounded-full filter blur-3xl"></div>
       
-      <div className="max-w-screen-xl mx-auto flex flex-col items-center justify-center h-full px-4 md:flex-row">
+      <div className="max-w-screen-xl mx-auto flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 sm:px-8 md:flex-row gap-8 sm:gap-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center h-full max-w-2xl z-10"
+          className="flex flex-col justify-center h-full max-w-2xl z-10 text-center md:text-left"
         >
           <motion.h2 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-sm sm:text-base text-secondary font-semibold uppercase tracking-widest mb-4"
+            className="text-xs sm:text-sm md:text-base text-secondary font-semibold uppercase tracking-widest mb-2 sm:mb-4"
           >
             Welcome to my portfolio
           </motion.h2>
@@ -35,7 +35,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-3 sm:mb-4"
           >
             <span className="gradient-text">I'm a Web Developer</span>
             <span className="text-secondary">.</span>
@@ -44,7 +44,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg sm:text-xl text-darkText max-w-xl mb-8"
+            className="text-base sm:text-lg md:text-xl text-darkText max-w-xl mx-auto md:mx-0 mb-6 sm:mb-8"
           >
             I specialize in building and designing exceptional digital experiences.
             Currently, I'm focused on building responsive web applications using
@@ -55,16 +55,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
           >
             <Link to="portfolio" smooth duration={500} className="group">
-              <button className="btn-primary flex items-center gap-2">
+              <button className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2">
                 <span>View Work</span>
                 <HiArrowNarrowRight className="group-hover:rotate-90 duration-300" />
               </button>
             </Link>
-            <Link to="contact" smooth duration={500}>
-              <button className="glass-effect px-6 py-3 text-lightText hover:text-secondary transition-all duration-300">
+            <Link to="contact" smooth duration={500} className="w-full sm:w-auto">
+              <button className="glass-effect w-full sm:w-auto px-6 py-3 text-lightText hover:text-secondary transition-all duration-300">
                 Contact Me
               </button>
             </Link>
@@ -74,7 +74,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="mt-8 flex items-center gap-6"
+            className="mt-6 sm:mt-8 flex items-center gap-6 justify-center md:justify-start"
           >
             {socialLinks.map((social, index) => (
               <a
@@ -94,16 +94,16 @@ const Hero = () => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="md:w-1/2 mt-8 md:mt-0 flex justify-center items-center"
+          className="w-full md:w-1/2 flex justify-center items-center"
         >
-          <div className="relative">
-            {/* Blob animations */}
-            <div className="absolute top-0 -left-4 w-72 h-72 bg-secondary/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-            <div className="absolute top-0 -right-4 w-72 h-72 bg-tertiary rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+          <div className="relative w-full max-w-md">
+            {/* Blob animations - adjusted for better mobile appearance */}
+            <div className="absolute top-0 -left-4 w-48 sm:w-72 h-48 sm:h-72 bg-secondary/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+            <div className="absolute top-0 -right-4 w-48 sm:w-72 h-48 sm:h-72 bg-tertiary rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-48 sm:w-72 h-48 sm:h-72 bg-primary rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
             
-            {/* Image container */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-secondary/50 animate-float animate-glow">
+            {/* Image container - made responsive */}
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-secondary/50 animate-float animate-glow mx-auto">
               <img
                 src="/profile.jpeg"
                 alt="my profile"
