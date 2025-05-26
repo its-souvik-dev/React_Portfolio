@@ -1,7 +1,53 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { Link } from 'react-scroll';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import profileImg from '../assets/images/profile.jpg';
+
+const TypewriterText = ({ text, typeSpeed = 150, deleteSpeed = 50, delayBeforeDelete = 2000, delayBeforeRewrite = 1000 }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+
+    if (isWaiting) {
+      timeout = setTimeout(() => {
+        setIsWaiting(false);
+        setIsDeleting(true);
+      }, delayBeforeDelete);
+    } else if (isDeleting) {
+      if (displayedText.length === 0) {
+        setIsDeleting(false);
+        timeout = setTimeout(() => {}, delayBeforeRewrite);
+      } else {
+        timeout = setTimeout(() => {
+          setDisplayedText(prev => prev.slice(0, -1));
+        }, deleteSpeed);
+      }
+    } else {
+      if (displayedText.length === text.length) {
+        setIsWaiting(true);
+      } else {
+        timeout = setTimeout(() => {
+          setDisplayedText(prev => text.slice(0, prev.length + 1));
+        }, typeSpeed);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, isWaiting, text, typeSpeed, deleteSpeed, delayBeforeDelete, delayBeforeRewrite]);
+
+  return (
+    <h3 className="text-2xl sm:text-3xl font-bold text-secondary relative group cursor-default min-h-[2.5em] flex items-center justify-center">
+      <span className="mr-1">{displayedText}</span>
+      <span className="animate-blink">|</span>
+      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+    </h3>
+  );
+};
 
 const Hero = () => {
   const socialLinks = [
@@ -105,11 +151,27 @@ const Hero = () => {
             {/* Image container - made responsive */}
             <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-secondary/50 animate-float animate-glow mx-auto">
               <img
-                src="/profile.jpeg"
+                src={profileImg}
                 alt="my profile"
                 className="w-full h-full object-cover object-center transform hover:scale-110 transition-transform duration-500"
               />
             </div>
+            
+            {/* Name with typing effect */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-center mt-6"
+            >
+              <TypewriterText 
+                text="Shadow Developer" 
+                typeSpeed={150}
+                deleteSpeed={75}
+                delayBeforeDelete={2000}
+                delayBeforeRewrite={1000}
+              />
+            </motion.div>
           </div>
         </motion.div>
       </div>

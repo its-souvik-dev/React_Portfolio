@@ -6,7 +6,7 @@ const Portfolio = () => {
       id: 1,
       title: "E-commerce Website",
       description: "A full-stack e-commerce platform built with React and Node.js",
-      image: "/portfolio1.jpg",
+      image: "images/ecommarce.jpg",
       demo: "https://demo-link-1.com",
       code: "https://github.com/yourusername/project1"
     },
@@ -14,7 +14,7 @@ const Portfolio = () => {
       id: 2,
       title: "Task Management App",
       description: "A React-based task management application with drag-and-drop functionality",
-      image: "/portfolio2.jpg",
+      image: "images/taskmanagement.jpg",
       demo: "https://demo-link-2.com",
       code: "https://github.com/yourusername/project2"
     },
@@ -22,7 +22,7 @@ const Portfolio = () => {
       id: 3,
       title: "Social Media Dashboard",
       description: "A responsive dashboard for social media analytics",
-      image: "/portfolio3.jpg",
+      image: "images/socialmeadia.jpg",
       demo: "https://demo-link-3.com",
       code: "https://github.com/yourusername/project3"
     },
