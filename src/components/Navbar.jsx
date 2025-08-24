@@ -41,7 +41,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center w-full h-full max-w-screen-xl mx-auto px-4 sm:px-8">
         <div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary">
-            Port<span className="text-lightText">folio.</span>
+            Dev<span className="text-lightText"> Souvik.</span>
           </h1>
         </div>
 
